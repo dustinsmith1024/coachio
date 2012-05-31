@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<h2><%= @workout.name %></h2>
+<p>
+  <b>When:</b>
+  <%= @workout.when.to_s(:SHORT_DATE_AND_TIME) %> (<%= @workout.length %> minutes)
+</p>
+
+<p>
+  <b>Group:</b>
+  <%= @workout.group %>
+</p>
+
+<%= link_to 'Edit', edit_team_workout_path(@team, @workout) %>
+
+<ol>
+<% @workout.plans.each do |plan| %>
+	<li><%= link_to plan.activity.name, team_activity_path(@team, plan.activity) %> (<%= plan.minutes %> minutes)</li>
+<%	end %>
+</ol>
+
+
+<%= link_to 'Back', team_workouts_path(@team) %>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  minutes: 1
+  group: false
+  team: 
+
+two:
+  name: MyString
+  minutes: 1
+  group: false
+  team: 

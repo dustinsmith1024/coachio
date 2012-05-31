@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  activity_id: 1
+  workout_id: 1
+  individual: false
+  public: false
+
+two:
+  activity_id: 1
+  workout_id: 1
+  individual: false
+  public: false

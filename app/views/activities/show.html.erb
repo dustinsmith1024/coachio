@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @activity.name %>
+</p>
+
+<p>
+  <b>Minutes:</b>
+  <%= @activity.minutes %>
+</p>
+
+<p>
+  <b>Group:</b>
+  <%= @activity.group %>
+</p>
+
+
+<%= link_to 'Edit', edit_team_activity_path(@team, @activity) %> |
+<%= link_to 'Back', team_activities_path(@team) %>

@@ -1,0 +1,34 @@
+<h1>Listing activities</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Minutes</th>
+    <th>Group</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @activities.each do |activity| %>
+  <tr>
+    <td><%= activity.name %></td>
+    <td><%= activity.minutes %></td>
+    <td><%= activity.group %></td>
+    <td><%= link_to 'Show', team_activity_path(@team, activity) %></td>
+    <td><%= link_to 'Edit', edit_team_activity_path(@team, activity) %></td>
+    <td><%= link_to 'Destroy', team_activity_path(@team, activity), confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+
+<nav>
+	<ul>
+		<li>
+			<%= link_to 'Team', team_path(@team) %></li>
+		<li>
+			<%= link_to 'New Activity', new_team_activity_path(@team) %>
+		</li>
+	</ul>
+</nav>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  when: 2012-05-13 01:19:19
+  group: false
+  team: 
+
+two:
+  name: MyString
+  when: 2012-05-13 01:19:19
+  group: false
+  team: 
