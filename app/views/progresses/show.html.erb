@@ -1,0 +1,29 @@
+<%- model_class = @progress.class -%>
+<div class="page-header">
+  <h2><%=t '.title', :default => model_class.model_name.human %></h2>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:goal_id) %>:</strong></dt>
+  <dd><%= @progress.goal.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:member_id) %>:</strong></dt>
+  <dd><%= @progress.member.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:made) %>:</strong></dt>
+  <dd><%= @progress.made %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:total) %>:</strong></dt>
+  <dd><%= @progress.total %></dd>
+</dl>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              team_goal_progresses_path(@team, @goal), :class => 'btn'  %>
+  <%= link_to t('.goals', :default => t("helpers.links.goals")),
+						  team_goals_path(@team), :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_team_goal_progress_path(@team, @goal, @progress), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              team_goal_progress_path(@team, @goal, @progress),
+              :method => 'delete',
+              :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+              :class => 'btn btn-danger' %>
+</div>

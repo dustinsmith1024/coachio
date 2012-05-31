@@ -15,3 +15,16 @@
 [type=number] {
     width: 25px;
 }
+
+footer {
+    margin-top: 20px;
+}
+
+div.page-header {
+    padding-bottom: 2px;
+}
+/*
+div.navbar-inner {
+    background-color: #FFF;
+    background-image: none;
+}*/

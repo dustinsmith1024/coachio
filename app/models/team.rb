@@ -1,9 +1,10 @@
 class Team < ActiveRecord::Base
-  attr_accessible :city, :mascot, :name, :state, :type
+  attr_accessible :city, :mascot, :name, :state, :kind, :description
   validates :name,  :presence => true
   has_many :members
   has_many :activities
   has_many :workouts
+  has_many :goals
 
   def plans
     workouts.collect{|w| w.plans }.flatten

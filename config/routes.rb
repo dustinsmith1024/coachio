@@ -1,11 +1,11 @@
 Coachio::Application.routes.draw do
 
-  resources :individuals
-
-  resources :practices
 
   resources :teams do
     resources :activities
+    resources :goals do
+      resources :progresses
+    end
     resources :members
     resources :workouts do 
       resources :plans

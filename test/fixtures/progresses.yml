@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  goal: 
+  member: 
+  made: 1
+  total: 1
+
+two:
+  goal: 
+  member: 
+  made: 1
+  total: 1

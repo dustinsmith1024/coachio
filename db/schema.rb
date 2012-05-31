@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120527150922) do
+ActiveRecord::Schema.define(:version => 20120531043147) do
 
   create_table "activities", :force => true do |t|
     t.string   "name"
@@ -23,6 +23,15 @@ ActiveRecord::Schema.define(:version => 20120527150922) do
   end
 
   add_index "activities", ["team_id"], :name => "index_activities_on_team_id"
+
+  create_table "goals", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.boolean  "active"
+    t.integer  "team_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "members", :force => true do |t|
     t.string   "first_name"
@@ -47,14 +56,27 @@ ActiveRecord::Schema.define(:version => 20120527150922) do
     t.integer  "position"
   end
 
+  create_table "progresses", :force => true do |t|
+    t.integer  "goal_id"
+    t.integer  "member_id"
+    t.integer  "made"
+    t.integer  "total"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "progresses", ["goal_id"], :name => "index_progresses_on_goal_id"
+  add_index "progresses", ["member_id"], :name => "index_progresses_on_member_id"
+
   create_table "teams", :force => true do |t|
     t.string   "name"
     t.string   "city"
     t.string   "state"
     t.string   "mascot"
-    t.string   "type"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "kind"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.text     "description"
   end
 
   create_table "workouts", :force => true do |t|

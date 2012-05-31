@@ -1,0 +1,27 @@
+<%= form_for ([@team, @goal, @progress]), :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :member_id, :class => 'control-label' %>
+    <div class="controls">
+			<%= f.select :member_id, @team.members.collect {|w| [w.name, w.id]}, { :include_blank => true} %>
+
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :made, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :made, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :total, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :total, :class => 'number_field' %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                team_goal_progresses_path(@team, @goal), :class => 'btn' %>
+  </div>
+<% end %>

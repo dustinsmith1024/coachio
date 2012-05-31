@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<div class="hero-unit2">
 
 <h2><%= @team.team_name.pluralize %></h2>
 
@@ -7,26 +7,9 @@
   <%= @team.location %>
 </p>
 
+<p ><%= @team.description %></p>
 
-<ul>
-	<li><%= @team.members %></li>
-</ul>
-<ul>
-	<li><%= @team.activities %></li>
-</ul>
-<ul>
-	<li><%= @team.workouts %></li>
-</ul>
-
-<nav>
-<ul><li><%= link_to 'Roster', team_members_path(@team) %>
-</li><li><%= link_to 'Add Team Member', new_team_member_path(@team) %>
-</li><li><%= link_to 'Activities', team_activities_path(@team) %>
-</li><li><%= link_to 'New Activity', new_team_activity_path(@team) %>
-</li><li><%= link_to 'Workouts', team_workouts_path(@team) %>
-</li><li><%= link_to 'New Workout', new_team_workout_path(@team) %>
-</li></ul>
-</nav>
+</div>
 
 <%= link_to 'Edit', edit_team_path(@team) %> |
 <%= link_to 'Back', teams_path %>
