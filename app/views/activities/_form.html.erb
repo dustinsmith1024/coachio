@@ -21,13 +21,13 @@
       <%= f.number_field :minutes, :class => 'number_field' %>
     </div>
   </div>
+
   <div class="control-group">
-    <%= f.label :group, :class => 'control-label' %>
+    <%= f.label 'Group Activity?', :class => 'control-label' %>
     <div class="controls">
       <%= f.check_box :group %>
     </div>
   </div>
-
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
 		<%= link_to 'Back', team_activities_path(@team), :class=>'btn' %>
