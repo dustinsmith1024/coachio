@@ -6,6 +6,7 @@ class Workout < ActiveRecord::Base
       :allow_destroy => true,
       :reject_if     => :all_blank
   attr_accessible :group, :name, :when, :plans_attributes
+  validates :name,  :presence => true
   
   def length
     plans.collect{|p| p.minutes}.sum

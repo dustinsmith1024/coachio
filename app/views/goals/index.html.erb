@@ -2,6 +2,10 @@
 <div class="page-header">
   <h2><%=t '.title', :default => model_class.model_name.human.pluralize %></h2>
 </div>
+<% if @goals.empty? %>
+<h3>No team goals yet. Why not add a few?</h3>
+<% else %>
+
 <table class="table table-striped">
   <thead>
     <tr>
@@ -31,7 +35,10 @@
     <% end %>
   </tbody>
 </table>
+<% end %>
 
+<div class="page-actions">
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_team_goal_path(@team),
             :class => 'btn btn-primary' %>
+</div>

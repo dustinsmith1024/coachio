@@ -1,6 +1,11 @@
-<h1>Listing activities</h1>
+<div class="page-header">
+	<h2>Listing activities</h2>
+</div>
 
-<table>
+<% if @activities.empty? %>
+<h3>No team activities yet. Activities are required to build workouts. Go ahead and add a few.</h3>
+<% else %>
+<table class="table table-striped">
   <tr>
     <th>Name</th>
     <th>Minutes</th>
@@ -21,14 +26,8 @@
   </tr>
 <% end %>
 </table>
+<% end %>
 
-
-<nav>
-	<ul>
-		<li>
-			<%= link_to 'Team', team_path(@team) %></li>
-		<li>
-			<%= link_to 'New Activity', new_team_activity_path(@team) %>
-		</li>
-	</ul>
-</nav>
+<div class="page-actions">
+			<%= link_to 'New Activity', new_team_activity_path(@team), :class=> 'btn btn-primary' %>
+</div>

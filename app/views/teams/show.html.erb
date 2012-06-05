@@ -10,6 +10,6 @@
 <p ><%= @team.description %></p>
 
 </div>
-
-<%= link_to 'Edit', edit_team_path(@team) %> |
-<%= link_to 'Back', teams_path %>
+<div class="page-actions">
+<%= link_to 'Edit', edit_team_path(@team), :class => 'btn btn-primary'%>
+</div>

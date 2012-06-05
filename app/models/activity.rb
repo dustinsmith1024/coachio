@@ -3,4 +3,6 @@ class Activity < ActiveRecord::Base
   has_many :plans
   has_many :workouts, :through => :plans
   attr_accessible :group, :minutes, :name
+  validates :name,  :presence => true
+  
 end

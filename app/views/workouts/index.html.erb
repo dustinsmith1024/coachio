@@ -1,7 +1,12 @@
-<h1>Listing workouts</h1>
+<div class="page-header">
+	<h1>Listing workouts</h1>
+</div>
 
-<table>
-  <tr>
+<% if @workouts.empty? %>
+<h3>No workouts yet. Let's add one!</h3>
+<% else %>
+<table class="table table-striped">
+<thead>  <tr>
     <th>Name</th>
     <th>When</th>
     <th>Group</th>
@@ -9,7 +14,7 @@
     <th></th>
     <th></th>
   </tr>
-
+</thead><tbody>
 <% @workouts.each do |workout| %>
   <tr>
     <td><%= workout.name %></td>
@@ -19,17 +24,15 @@
     <td><%= link_to 'Edit', edit_team_workout_path(@team, workout) %></td>
     <td><%= link_to 'Destroy', team_workout_path(@team, workout), confirm: 'Are you sure?', method: :delete %></td>
   </tr>
-<% end %>
+<% end %></tbody>
 </table>
+<% end %>
 
-<br />
 
-<nav>
-	<ul>
-		<li>
-			<%= link_to 'Team', team_path(@team) %></li>
-		<li>
-			<%= link_to 'New Workout', new_team_workout_path(@team) %>
-		</li>
-	</ul>
-</nav>
+<div class="page-actions">
+<% if @team.activities.empty? %>
+			<%= link_to 'Add Activities before creating a workout', new_team_activity_path(@team), :class => 'btn btn-primary' %>
+<% else %>
+			<%= link_to 'New Workout', new_team_workout_path(@team), :class => 'btn btn-primary' %>
+<% end %>
+</div>

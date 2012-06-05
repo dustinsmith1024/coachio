@@ -1,9 +1,11 @@
-<h1>Listing members</h1>
-
-<%= link_to 'Team', team_path(@team) %>
-
-<table>
-  <tr>
+<div class="page-header">
+<h2>Listing members</h2>
+</div>
+<% if @members.empty? %>
+<h3>No team members yet. Why not add a few?</h3>
+<% else %>
+<table class="table table-striped">
+<thead>  <tr>
     <th>#</th>
     <th>Name</th>
     <th>Player</th>
@@ -12,7 +14,7 @@
     <th></th>
     <th></th>
   </tr>
-
+</thead><tbody>
 <% @members.each do |member| %>
   <tr>
     <td><%= member.number %></td>
@@ -24,8 +26,9 @@
     <td><%= link_to 'Destroy', team_member_path(@team, member), confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
+</tbody>
 </table>
-
-<br />
-
-<%= link_to 'New member', new_team_member_path(@team) %>
+<% end %>
+<div class="page-actions">
+<%= link_to 'New member', new_team_member_path(@team),:class => 'btn btn-primary' %>
+</div>

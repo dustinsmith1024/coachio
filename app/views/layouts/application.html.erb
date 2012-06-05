@@ -47,14 +47,14 @@
 					<% end %>
               <%= yield %>
             </div>
-						<% if @team %>
+						<% if @team and @team.name %>
 
             <div class="span3">
-              <div class="well sidebar-nav">
-                <h3><%= @team.team_name %></h3>
+              <div class="well sidebar-nav"><img src="/images/mask.gif" /> 
+                <h3><%= link_to @team.team_name, team_path(@team) %></h3>
                 <ul class="nav nav-list">
                   <li class="nav-header">Team Links</li>
-                  <li><%= link_to "Activities", team_goals_path(@team)  %></li>
+                  <li><%= link_to "Activities", team_activities_path(@team)  %></li>
                   <li><%= link_to "Goals", team_goals_path(@team)  %></li>
                   <li><%= link_to "Roster", team_members_path(@team)  %></li>
                   <li><%= link_to "Workouts", team_workouts_path(@team)  %></li>

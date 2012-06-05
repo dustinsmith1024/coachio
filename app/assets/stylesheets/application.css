@@ -23,6 +23,10 @@ footer {
 div.page-header {
     padding-bottom: 2px;
 }
+
+.page-actions {
+    margin-top: 15px;
+}
 /*
 div.navbar-inner {
     background-color: #FFF;

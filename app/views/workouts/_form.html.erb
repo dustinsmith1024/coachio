@@ -11,14 +11,20 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :when %><br />
-    <%= f.datetime_select :when %>
+
+  <div class="control-group">
+    <%= f.label :when, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.datetime_select :when %>
+    </div>
   </div>
+
 
   <%= f.fields_for :plans do |ff| %>
     <div>
@@ -32,10 +38,13 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :group %><br />
-    <%= f.check_box :group %>
+  <div class="control-group">
+    <%= f.label :group, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :group %>
+    </div>
   </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
