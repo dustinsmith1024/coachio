@@ -1,13 +1,17 @@
 Coachio::Application.routes.draw do
 
 
+
   resources :teams do
+    # not doing anything yet...
+    match "practices" => "teams#practices"
     resources :activities
     resources :goals do
       resources :progresses
     end
     resources :members
-    resources :workouts do 
+    resources :workouts do
+      resources :practices
       resources :plans
     end
   end

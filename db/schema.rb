@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120605032153) do
+ActiveRecord::Schema.define(:version => 20120610043350) do
 
   create_table "activities", :force => true do |t|
     t.string   "name"
@@ -51,13 +51,27 @@ ActiveRecord::Schema.define(:version => 20120605032153) do
     t.integer  "workout_id"
     t.boolean  "individual"
     t.boolean  "public"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.integer  "position"
     t.integer  "reps"
-    t.boolean  "track_results"
     t.integer  "minutes"
   end
+
+  create_table "practices", :force => true do |t|
+    t.date     "scheduled_date"
+    t.time     "scheduled_time"
+    t.integer  "team_id"
+    t.integer  "member_id"
+    t.boolean  "track_results"
+    t.integer  "workout_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "practices", ["member_id"], :name => "index_practices_on_member_id"
+  add_index "practices", ["team_id"], :name => "index_practices_on_team_id"
+  add_index "practices", ["workout_id"], :name => "index_practices_on_workout_id"
 
   create_table "progresses", :force => true do |t|
     t.integer  "goal_id"
@@ -84,7 +98,6 @@ ActiveRecord::Schema.define(:version => 20120605032153) do
 
   create_table "workouts", :force => true do |t|
     t.string   "name"
-    t.datetime "when"
     t.boolean  "group"
     t.integer  "team_id"
     t.datetime "created_at", :null => false

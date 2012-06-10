@@ -2,14 +2,17 @@
 	<h1>Listing workouts</h1>
 </div>
 
+<p>This is your collection of workouts. Once workouts are created you may assign them to the team or players accordingly.  We keep all the workouts so you can reuse them later on.</p>
+
 <% if @workouts.empty? %>
 <h3>No workouts yet. Let's add one!</h3>
 <% else %>
 <table class="table table-striped">
 <thead>  <tr>
     <th>Name</th>
-    <th>When</th>
     <th>Group</th>
+    <th></th>
+    <th></th>
     <th></th>
     <th></th>
     <th></th>
@@ -18,8 +21,9 @@
 <% @workouts.each do |workout| %>
   <tr>
     <td><%= workout.name %></td>
-    <td><%= workout.when %></td>
     <td><%= workout.group %></td>
+    <td><%= link_to 'Schedule', new_team_workout_practice_path(@team, workout) %></td>
+    <td><%= link_to 'Planned', team_workout_practices_path(@team, workout) %></td>
     <td><%= link_to 'Show', team_workout_path(@team, workout) %></td>
     <td><%= link_to 'Edit', edit_team_workout_path(@team, workout) %></td>
     <td><%= link_to 'Destroy', team_workout_path(@team, workout), confirm: 'Are you sure?', method: :delete %></td>

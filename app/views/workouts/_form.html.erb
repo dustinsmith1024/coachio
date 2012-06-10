@@ -19,9 +19,9 @@
   </div>
 
   <div class="control-group">
-    <%= f.label :when, :class => 'control-label' %>
+    <%= f.label :group, 'Group Workout? uncheck for individuals', :class => 'control-label' %>
     <div class="controls">
-      <%= f.datetime_select :when %>
+      <%= f.check_box :group %>
     </div>
   </div>
 
@@ -30,7 +30,6 @@
 	<th>Activity</th>
 	<th>Minutes</th>
 	<th>Reps</th>
-	<th>Track</th>
 	<th>Delete</th></tr></thead><tbody>
   <%= f.fields_for :plans do |ff| %>
     <tr>
@@ -39,7 +38,6 @@
 	</td><td>	  <%= ff.select :activity_id, @activities.collect {|w| [w.name, w.id]}, { :include_blank => true} %>
 	</td><td>		<%= ff.number_field :minutes %>
 	</td><td>		<%= ff.number_field :reps %>
-	</td><td>		<%= ff.check_box :track_results %>
       <% if ff.object.persisted? %>
     	</td><td>    <%= ff.check_box :_destroy %>
 		<% else %>
@@ -49,12 +47,6 @@
   <% end %></tbody>
 </table>
 
-  <div class="control-group">
-    <%= f.label :group, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.check_box :group %>
-    </div>
-  </div>
 
   <div class="actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>

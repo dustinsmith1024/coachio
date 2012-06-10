@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Scheduled date:</b>
+  <%= @practice.scheduled_date %>
+</p>
+
+<p>
+  <b>Scheduled time:</b>
+  <%= @practice.scheduled_time %>
+</p>
+
+<p>
+  <b>Team:</b>
+  <%= @practice.team %>
+</p>
+
+<p>
+  <b>Member:</b>
+  <%= @practice.member %>
+</p>
+
+<p>
+  <b>Track results:</b>
+  <%= @practice.track_results %>
+</p>
+
+<p>
+  <b>Plan:</b>
+  <%= @practice.plan %>
+</p>
+
+
+<%= link_to 'Edit', edit_practice_path(@practice) %> |
+<%= link_to 'Back', practices_path %>

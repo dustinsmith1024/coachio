@@ -5,6 +5,7 @@ class Team < ActiveRecord::Base
   has_many :activities
   has_many :workouts
   has_many :goals
+  has_many :practices
 
   def plans
     workouts.collect{|w| w.plans }.flatten

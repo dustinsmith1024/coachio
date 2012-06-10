@@ -27,8 +27,9 @@ class WorkoutsController < ApplicationController
   # GET /workouts/new.json
   def new
     @team = Team.find(params[:team_id])
-    @workout = @team.workouts.new
-
+    @workout = @team.workouts.new(:group => true)
+    @activities = @team.activities
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @workout }
@@ -39,8 +40,7 @@ class WorkoutsController < ApplicationController
   def edit
     @team = Team.find(params[:team_id])
     @workout = @team.workouts.find(params[:id])
-    @activities = @team.activities
-    
+    @activities = @team.activities    
   end
 
   # POST /workouts
@@ -48,7 +48,8 @@ class WorkoutsController < ApplicationController
   def create
     @team = Team.find(params[:team_id])
     @workout = @team.workouts.new(params[:workout])
-
+    @activities = @team.activities
+    puts @workout
     respond_to do |format|
       if @workout.save
         format.html { redirect_to team_workouts_path(@team), notice: 'workout was successfully created.' }
