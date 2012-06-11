@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Reps:</b>
+  <%= @result.reps %>
+</p>
+
+<p>
+  <b>Practice:</b>
+  <%= @result.practice %>
+</p>
+
+<p>
+  <b>Activity:</b>
+  <%= @result.activity %>
+</p>
+
+
+<%= link_to 'Edit', edit_result_path(@result) %> |
+<%= link_to 'Back', results_path %>

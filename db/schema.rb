@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120610043350) do
+ActiveRecord::Schema.define(:version => 20120610213201) do
 
   create_table "activities", :force => true do |t|
     t.string   "name"
@@ -67,6 +67,8 @@ ActiveRecord::Schema.define(:version => 20120610043350) do
     t.integer  "workout_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.boolean  "complete"
+    t.text     "notes"
   end
 
   add_index "practices", ["member_id"], :name => "index_practices_on_member_id"
@@ -84,6 +86,17 @@ ActiveRecord::Schema.define(:version => 20120610043350) do
 
   add_index "progresses", ["goal_id"], :name => "index_progresses_on_goal_id"
   add_index "progresses", ["member_id"], :name => "index_progresses_on_member_id"
+
+  create_table "results", :force => true do |t|
+    t.integer  "reps"
+    t.integer  "practice_id"
+    t.integer  "activity_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "results", ["activity_id"], :name => "index_results_on_activity_id"
+  add_index "results", ["practice_id"], :name => "index_results_on_practice_id"
 
   create_table "teams", :force => true do |t|
     t.string   "name"

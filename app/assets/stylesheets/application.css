@@ -27,6 +27,10 @@ div.page-header {
 .page-actions {
     margin-top: 15px;
 }
+
+.strike {
+    text-decoration: line-through;
+}
 /*
 div.navbar-inner {
     background-color: #FFF;

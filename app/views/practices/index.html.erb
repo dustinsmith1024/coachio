@@ -5,12 +5,12 @@
 	  <tr>
     <th>Scheduled date</th>
     <th>Scheduled time</th>
-    <th>Team</th>
-    <th>Member</th>
+    <th>Player</th>
     <th>Track results</th>
     <th>Workout</th>
     <th></th>
-    <th></th>
+		<th></th>
+		<th></th>
     <th></th>
   </tr>
 </thead><tbody>
@@ -18,13 +18,15 @@
   <tr>
     <td><%= practice.scheduled_date %></td>
     <td><%= practice.scheduled_time %></td>
-    <td><%= practice.team.name if practice.team %></td>
     <td><%= practice.member.name if practice.member %></td>
     <td><%= practice.track_results %></td>
     <td><%= practice.workout.name %></td>
     <td><%= link_to 'Show', team_workout_practice_path(@team, @workout, practice) %></td>
+		<% unless practice.complete %>
+    <td><%= link_to 'Complete', complete_team_workout_practice_path(@team, @workout, practice) %></td>
+		<% end %>
     <td><%= link_to 'Edit', edit_team_workout_practice_path(@team, @workout, practice) %></td>
-    <td><%= link_to 'Destroy', team_workout_practice_path(@team, @workout, practice), confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Cancel', team_workout_practice_path(@team, @workout, practice), confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </tbody>

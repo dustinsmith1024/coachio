@@ -1,0 +1,27 @@
+<h1>Listing results</h1>
+
+<table>
+  <tr>
+    <th>Reps</th>
+    <th>Practice</th>
+    <th>Activity</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @results.each do |result| %>
+  <tr>
+    <td><%= result.reps %></td>
+    <td><%= result.practice %></td>
+    <td><%= result.activity %></td>
+    <td><%= link_to 'Show', result %></td>
+    <td><%= link_to 'Edit', edit_result_path(result) %></td>
+    <td><%= link_to 'Destroy', result, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Result', new_result_path %>

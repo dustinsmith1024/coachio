@@ -15,10 +15,9 @@ class PracticesController < ApplicationController
   # GET /practices/1
   # GET /practices/1.json
   def show
-    puts 'show'
     @team = Team.find(params[:team_id])
     @workout = @team.workouts.find(params[:workout_id])
-    @practice = @workout.practice.find(params[:id])
+    @practice = @workout.practices.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -29,7 +28,6 @@ class PracticesController < ApplicationController
   # GET /practices/new
   # GET /practices/new.json
   def new
-    puts 'jere'
     @team = Team.find(params[:team_id])
     @workouts = @team.workouts
     @workout = @team.workouts.find(params[:workout_id])
@@ -47,6 +45,20 @@ class PracticesController < ApplicationController
     @workouts = @team.workouts
     @workout = @team.workouts.find(params[:workout_id])
     @practice = @workout.practices.find(params[:id])
+  end
+
+  # GET /practices/1/edit
+  def complete
+    @team = Team.find(params[:team_id])
+    @workouts = @team.workouts
+    @workout = @team.workouts.find(params[:workout_id])
+    @practice = @workout.practices.find(params[:id])
+    @practice.complete = true
+    @workout.plans.each do |p|
+      puts p
+      @practice.results.build(:activity_id => p.activity_id)
+    end
+    puts @practice.results
   end
 
   # POST /practices

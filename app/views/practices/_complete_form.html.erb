@@ -1,0 +1,56 @@
+<%= form_for([@team, @workout, @practice], :html => { :class => 'form-horizontal' }) do |f| %>
+  <% if @practice.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@practice.errors.count, "error") %> prohibited this practice from being saved:</h2>
+
+      <ul>
+      <% @practice.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+	<% if @practice.track_results %>
+
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>Order</th>
+				<th>Activity</th>
+				<th>Made</th>
+				<th>Max Reps</th>
+			</tr>
+		</thead>
+		<tbody>
+	  	<%= f.fields_for :results do |ff| %>
+	    <tr>
+				<td>
+					<%= ff.number_field :plan_position, :disabled => 'disabled' %>
+				</td>
+				<td>
+					<%= ff.text_field :activity_name, :disabled => 'disabled' %>
+				</td>
+				<td>
+					<%= ff.number_field :reps %><%= ff.hidden_field :activity_id %>
+				</td>
+				<td>
+					<%= ff.number_field :plan_reps, :class => 'number_field', :disabled => 'disabled' %>
+				</td>
+		</tr>
+	  <% end %></tbody>
+	</table>
+
+	<% end %>
+  <div class="control-group">
+    <%= f.label :notes, 'Practice Notes:', :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :notes %><%= f.hidden_field :complete %>
+    </div>
+  </div>
+
+
+  <div class="form-actions">
+    <%= f.submit 'Complete Practice', :class => 'btn btn-primary' %>
+  </div>
+<% end %>

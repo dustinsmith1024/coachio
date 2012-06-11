@@ -1,4 +1,4 @@
-<%= form_for([@team, @workout, @practice]) do |f| %>
+<%= form_for([@team, @workout, @practice], :html => { :class => 'form-horizontal' }) do |f| %>
   <% if @practice.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@practice.errors.count, "error") %> prohibited this practice from being saved:</h2>
@@ -11,26 +11,37 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :scheduled_date %><br />
-    <%= f.date_select :scheduled_date %>
-  </div>
-  <div class="field">
-    <%= f.label :scheduled_time %><br />
-    <%= f.time_select :scheduled_time %>
-  </div>
-	<% unless @workout.group %>
-  <div class="field">
-    <%= f.label :member %><br />
-		<%= f.select :member_id, @team.members.collect {|w| [w.name, w.id]} %>
-  </div>
-	<% end %>
-  <div class="field">
-    <%= f.label :track_results %><br />
-    <%= f.check_box :track_results %>
+  <div class="control-group">
+    <%= f.label :scheduled_date, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.date_select :scheduled_date %>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="control-group">
+    <%= f.label :scheduled_time, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.time_select :scheduled_time %>
+    </div>
+  </div>
+
+	<% unless @workout.group %>
+  <div class="control-group">
+    <%= f.label :member, :class => 'control-label' %>
+    <div class="controls">
+			<%= f.select :member_id, @team.members.collect {|w| [w.name, w.id]} %>
+    </div>
+  </div>
+	<% end %>
+	
+  <div class="control-group">
+    <%= f.label :track_results, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :track_results %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
   </div>
 <% end %>

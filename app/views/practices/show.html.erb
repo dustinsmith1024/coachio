@@ -1,24 +1,25 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <b>Workout:</b>
+  <%= @practice.workout.name %>
+</p>
+<p <% if @practice.complete %>class="strike"<% end %>>
   <b>Scheduled date:</b>
   <%= @practice.scheduled_date %>
 </p>
 
-<p>
+<p <% if @practice.complete %>class="strike"<% end %>>
   <b>Scheduled time:</b>
   <%= @practice.scheduled_time %>
 </p>
 
-<p>
-  <b>Team:</b>
-  <%= @practice.team %>
-</p>
-
+<% if @practice.member %>
 <p>
   <b>Member:</b>
-  <%= @practice.member %>
+  <%= @practice.member.name %>
 </p>
+<% end %>
 
 <p>
   <b>Track results:</b>
@@ -26,10 +27,29 @@
 </p>
 
 <p>
-  <b>Plan:</b>
-  <%= @practice.plan %>
+	<%= @practice.notes %>
 </p>
 
+<% if @practice.track_results and @practice.complete %>
+<table class="table table-striped">
+	<thead>
+		<th></th>
+		<th>Activity</th>
+		<th>Made</th>
+		<th>Max</th>
+		</thead>
+		<tbody>
+		<% @practice.results.each do |r| %>
+		<tr>
+			<td>
+				<%= r.plan_position %>.
+			</td>
+			<td><%= r.activity_name %></td>
+			<td><%= r.reps %></td>
+			<td><%= r.plan_reps %></td>
+		</tr>
+	<% end %>
+	</table>
+<% end %>
 
-<%= link_to 'Edit', edit_practice_path(@practice) %> |
-<%= link_to 'Back', practices_path %>
+<%= link_to 'Edit', edit_team_workout_practice_path(@team, @workout, @practice) %> |

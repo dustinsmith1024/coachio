@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  reps: 1
+  practice: 
+  activity: 
+
+two:
+  reps: 1
+  practice: 
+  activity: 

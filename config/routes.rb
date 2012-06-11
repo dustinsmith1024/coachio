@@ -1,7 +1,5 @@
 Coachio::Application.routes.draw do
 
-
-
   resources :teams do
     # not doing anything yet...
     match "practices" => "teams#practices"
@@ -11,7 +9,10 @@ Coachio::Application.routes.draw do
     end
     resources :members
     resources :workouts do
-      resources :practices
+      resources :practices do
+        resources :results # Not sure I need these routes, probably just handle it in practice
+        get 'complete', :on => :member
+      end
       resources :plans
     end
   end
