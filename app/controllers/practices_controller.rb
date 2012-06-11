@@ -56,7 +56,7 @@ class PracticesController < ApplicationController
     @practice.complete = true
     @workout.plans.each do |p|
       puts p
-      @practice.results.build(:activity_id => p.activity_id)
+      @practice.results.build(:plan_id => p.id)
     end
     puts @practice.results
   end

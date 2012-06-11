@@ -15,6 +15,19 @@
   <%= @member.position %>
 </p>
 
-
+<table class="table table-striped">
+<thead><tr>
+	<th>Activity</th>
+	<th>Reps</th>
+	</thead>
+	<tbody>
+<% @member.practice_results.each do |r| %>
+	<tr>
+		<td><%= r.plan.activity.name %></td>
+		<td><%= r.reps %> / <%= r.plan.reps %></td>
+	</tr>
+<% end %>
+</tbody>
+</table>
 <%= link_to 'Edit', edit_team_member_path(@team, @member) %> |
 <%= link_to 'Back', team_members_path(@team) %>
