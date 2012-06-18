@@ -17,12 +17,14 @@
 
 <table class="table table-striped">
 <thead><tr>
+	<th>Date</th>
 	<th>Activity</th>
 	<th>Reps</th>
 	</thead>
 	<tbody>
 <% @member.practice_results.each do |r| %>
 	<tr>
+		<td><%= link_to r.practice.scheduled_date, team_workout_practice_path(@team, r.plan.workout, r.practice.id) %></td>
 		<td><%= r.plan.activity.name %></td>
 		<td><%= r.reps %> / <%= r.plan.reps %></td>
 	</tr>

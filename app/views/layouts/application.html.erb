@@ -47,6 +47,19 @@
 					<% end %>
               <%= yield %>
             </div>
+
+						<% if current_user %>
+
+            <div class="span3">
+              <div class="well sidebar-nav"><img src="/images/mask.gif" /> 
+                <h3><%= current_user.email %></h3>
+                <ul class="nav nav-list">
+                  <li class="nav-header">User Links</li>
+                </ul>
+              </div><!--/.well -->
+            </div><!--/span-->
+						<% end %>
+						
 						<% if @team and @team.name %>
 
             <div class="span3">

@@ -18,4 +18,16 @@ class Member < ActiveRecord::Base
       results
     end
   end
+  
+  
+  def practice_results2
+    results = practices.collect{|p| p.results}
+    puts results
+    if results
+      results.flatten.sort!{|a,b| a.plan_id <=> b.plan_id }
+    else
+      results
+    end
+  end
+  
 end

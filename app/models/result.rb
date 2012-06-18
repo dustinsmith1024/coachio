@@ -11,11 +11,14 @@ class Result < ActiveRecord::Base
   end
   
   def plan_reps
-    practice.workout.plans.find_by_activity_id(plan.activity.id).reps
+    plan.reps
+    #practice.workout.plans.find_by_activity_id(plan.activity.id).reps
   end
   
   
   def plan_position
-    practice.workout.plans.find_by_activity_id(plan.activity.id).position
+    puts plan.to_json
+    plan.position
+    #practice.workout.plans.find_by_activity_id(plan.activity.id).position
   end
 end

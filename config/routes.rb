@@ -1,5 +1,7 @@
 Coachio::Application.routes.draw do
 
+  devise_for :users
+
   resources :teams do
     # not doing anything yet...
     match "practices" => "teams#practices"
